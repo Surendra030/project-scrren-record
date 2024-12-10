@@ -1,0 +1,41 @@
+name: Selenium Test with FFmpeg
+
+on: [push]
+  
+
+jobs:
+  test:
+    runs-on: ubuntu-latest  # Use an Ubuntu runner
+
+    steps:
+      # Checkout the repository code
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      # Set up Python (with a specific version)
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.12'  # Specify Python version
+
+      # Install FFmpeg
+      - name: Install FFmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg  # Install FFmpeg
+      # Install PulseAudio (virtual audio system)
+      - name: Install PulseAudio
+        run: |
+          sudo apt-get install -y pulseaudio  # Install PulseAudio for audio simulation
+          pulseaudio --start  # Start PulseAudio server
+
+      # Install necessary Python packages
+      - name: Install Python dependencies
+        run: |
+          pip install selenium  # Install Selenium
+          pip install webdriver-manager  # Install WebDriver Manager if needed
+
+      # Run the Python script using Selenium
+      - name: Run Selenium Script
+        run: |
+          python github.py  # Run your Python script
