@@ -8,17 +8,18 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from mega import Mega
-# Set up Chrome options for headless execution
+
+
+# Set up Chrome options
 options = Options()
 options.add_argument("--disable-gpu")
 options.add_argument("--window-size=1920x1080")
-options.add_argument("--headless")  # Headless mode
-options.add_argument("--disable-notifications")  # Disable notifications
-options.add_argument("--disable-blink-features=AutomationControlled")  # Disable WebDriver flag
+options.add_argument("--headless")  # Uncomment for headless mode
 
-# Setup ChromeDriver path (use ChromeDriver provided by WebDriver Manager)
-from webdriver_manager.chrome import ChromeDriverManager
-driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
+# Specify the path to your chromedriver
+chromedriver_path = r"chromedriver"
+service = Service(executable_path=chromedriver_path)
+driver = webdriver.Chrome(service=service, options=options)
 
 try:
     driver.get("https://accounts.google.com/signin")
