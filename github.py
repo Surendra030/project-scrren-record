@@ -10,11 +10,12 @@ from selenium.webdriver.common.action_chains import ActionChains
 from mega import Mega
 
 
-# Set up Chrome options
 options = Options()
 options.add_argument("--disable-gpu")
 options.add_argument("--window-size=1920x1080")
-options.add_argument("--headless")  # Uncomment for headless mode
+options.add_argument("--headless")  # Headless mode
+options.add_argument("--disable-notifications")  # Disable notifications
+options.add_argument("--disable-blink-features=AutomationControlled")  # Disable WebDriver flag
 
 # Specify the path to your chromedriver
 chromedriver_path = r"chromedriver"
