@@ -16,7 +16,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.12'  # Specify Python version
+          python-version: '3.10'  # Specify Python version
 
       # Install FFmpeg
       - name: Install FFmpeg
@@ -32,8 +32,9 @@ jobs:
       # Install necessary Python packages
       - name: Install Python dependencies
         run: |
-          pip install selenium  # Install Selenium
-          pip install webdriver-manager mega.py  # Install WebDriver Manager if needed
+          pip install selenium webdriver-manager mega.py # Install Selenium
+          sudo apt-get install -y poppler-utils
+
 
       # Run the Python script using Selenium
       - name: Run Selenium Script
