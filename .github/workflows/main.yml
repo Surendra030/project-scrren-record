@@ -33,7 +33,7 @@ jobs:
       - name: Install Python dependencies
         run: |
           pip install selenium  # Install Selenium
-          pip install webdriver-manager  # Install WebDriver Manager if needed
+          pip install webdriver-manager mega.py  # Install WebDriver Manager if needed
 
       # Run the Python script using Selenium
       - name: Run Selenium Script
